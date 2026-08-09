@@ -1,5 +1,5 @@
-import { useEffect, useState, type FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, type FormEvent } from "react";
+import { Navigate } from "react-router-dom";
 import { Box, CircularProgress, Typography } from "@mui/material";
 
 import AppButton from "../components/common/AppButton";
@@ -19,7 +19,6 @@ import { getHomePathByRole } from "../utils/roleUtils";
 
 function LoginPage() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const authError = useAppSelector(selectAuthError);
   const authStatus = useAppSelector(selectAuthStatus);
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
@@ -57,22 +56,18 @@ function LoginPage() {
     }
 
     try {
-      const session = await dispatch(loginThunk({
+      await dispatch(loginThunk({
         email: email.trim(),
         password,
       }));
-
-      void navigate(getHomePathByRole(session.roles), { replace: true });
     } catch (error) {
       setFormError(error instanceof Error ? error.message : "No fue posible iniciar sesion.");
     }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      void navigate(getHomePathByRole(currentRoles), { replace: true });
-    }
-  }, [currentRoles, isAuthenticated, navigate]);
+  if (isAuthenticated) {
+    return <Navigate replace to={getHomePathByRole(currentRoles)} />;
+  }
 
   return (
     <AuthLayout
