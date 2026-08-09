@@ -114,4 +114,5 @@ docker compose down -v
 - Si cambias la URL o el puerto del backend, vuelve a construir la imagen del frontend para que el bundle use la nueva direccion de la API.
 
   ## notas 2
-  - hay casos a la hora de recargar la pagina por lo que puede aparece fondo blanco, en ese caso solo necesita volver a la url principal
+  - hay casos en lo qeu la pantalla no cargue, en esos casos hay que recargar, en caso de que no funcione volver a la url principal
+  - 
