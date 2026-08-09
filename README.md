@@ -112,3 +112,7 @@ docker compose down -v
 - El backend lee los valores de la base de datos desde variables de entorno.
 - El bundle del frontend recibe `VITE_API_BASE_URL` durante la construccion por medio de Docker Compose.
 - Si cambias la URL o el puerto del backend, vuelve a construir la imagen del frontend para que el bundle use la nueva direccion de la API.
+
+  ## notas 2
+  - hay casos en lo qeu la pantalla no cargue, en esos casos hay que recargar, en caso de que no funcione volver a la url principal
+  - 
