@@ -1,1 +1,0 @@
-cmd.exe /c "cd front\bienestar-app && npm run build"
